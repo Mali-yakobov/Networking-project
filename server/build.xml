@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="protocol.makejar" default="compile" basedir=".">
+  <target name ="compile" description="Compiling">
+    <mkdir dir="bin/protocol"/>
+    <mkdir dir="bin/protocol_http"/>
+    <mkdir dir="bin/protocol_whatsapp"/>
+    <mkdir dir="bin/tokenizer"/>
+    <mkdir dir="bin/tokenizer_http"/>
+    <mkdir dir="bin/tokenizer_whatsaap"/>
+    <mkdir dir="bin/threadPerClient"/>   
+    <mkdir dir="bin/protocol/http"/>
+    <mkdir dir="bin/protocol/whatsapp"/>
+    <mkdir dir="bin/tokenizer/http"/>
+    <mkdir dir="bin/tokenizer/whatsapp"/>
+    <mkdir dir="bin/reactor"/>   
+
+    <javac srcdir="src/tokenizer" destdir="bin"/>
+    <jar jarfile="bin/tokenizer.jar" includes="tokenizer/*.class" basedir="bin"/>
+    
+    <javac srcdir="src/tokenizer_http" destdir="bin"/>
+    <jar jarfile="bin/protocol_http.jar" includes="protocol_http/*.class" basedir="bin"/>
+    <javac srcdir="src/tokenizer_whatsaap" destdir="bin"/>
+    <jar jarfile="bin/protocol_whatsapp.jar" includes="protocol_whatsapp/*.class" basedir="bin"/>
+    
+    <javac srcdir="src/tokenizer/http" destdir="bin"/>
+    <jar jarfile="bin/tokenizer.http.jar" includes="tokenizer/http/*.class" basedir="bin"/>
+    <javac srcdir="src/tokenizer/whatsapp" destdir="bin"/>
+    <jar jarfile="bin/tokenizer.whatsapp.jar" includes="tokenizer/whatsapp/*.class" basedir="bin"/>
+
+    <javac srcdir="src/protocol" destdir="bin"/>
+    <jar jarfile="bin/protocol.jar" includes="protocol/*.class" basedir="bin"/>
+
+    <javac srcdir="src/protocol/http" destdir="bin"/>
+    <jar jarfile="bin/protocol.http.jar" includes="protocol/http/*.class" basedir="bin"/>
+    <javac srcdir="src/protocol/whatsapp" destdir="bin"/>    
+    <jar jarfile="bin/protocol.whatsapp.jar" includes="protocol/whatsapp/*.class" basedir="bin"/>
+
+    <javac srcdir="src/protocol_http" destdir="bin"/>
+    <jar jarfile="bin/tokenizer_http.jar" includes="tokenizer_http/*.class" basedir="bin"/>
+    <javac srcdir="src/protocol_whatsapp" destdir="bin"/>
+    <jar jarfile="bin/tokenizer_whatsaap.jar" includes="tokenizer_whatsaap/*.class" basedir="bin"/>
+
+  </target>
+  <target name ="jar" description="Create a jar">
+
+    <javac srcdir="src/threadPerClient" destdir="bin"/>
+    <jar jarfile="bin/threadPerClient.jar" includes="threadPerClient/*.class" basedir="bin"/>
+
+    <javac srcdir="src/reactor" destdir="bin"/>    
+    <jar jarfile="bin/reactor.jar" includes="reactor/*.class" basedir="bin"/>
+               
+    <javac srcdir="src" destdir="bin">
+      <classpath>
+         <pathelement path="bin"/>
+      </classpath>
+    </javac>
+  </target>   
+</project>
